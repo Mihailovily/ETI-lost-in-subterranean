@@ -1,8 +1,6 @@
 
 # ETI:lost in subterranean 
 
-[![CircleCI](https://circleci.com/gh/1tayH/noisy/tree/master.svg?style=shield)](https://circleci.com/gh/1tayH/noisy/tree/master)
-
 Текстовый квест-игра для  браузера
 
 ## Общие особенности
