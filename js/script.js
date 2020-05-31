@@ -14,6 +14,7 @@ function getRandomInt(min, max) {
 }
 
 function RoomMake() {
+
     var N = getRandomInt(5, 20); // Размеры комнаты по Y (в коде x)
     var M = getRandomInt(5, 20); // Размеры комнаты по Х (в коде y)
     var x = getRandomInt(20, 30); // Размеры поля
@@ -28,4 +29,17 @@ function RoomMake() {
         }
     }
     var room = createArray(N, M);
+    var coridor_wid = getRandomInt(3, 5);
+    if (storona = 1) {
+        m = 0
+    }
+    if (storona = 2) {
+        n = n;
+    }
+    if (storona = 3) {
+        m = 0
+    }
+    if (storona = 4) {
+        n = n;
+    }
 }
