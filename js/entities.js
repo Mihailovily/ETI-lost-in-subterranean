@@ -184,9 +184,18 @@ Game.Mixins.Destructible = {
             Game.sendMessage(attacker, 'Ты прибил %s!', [this.getName()]);
             // Check if the player died, and if so call their act method to prompt the user.
             if (this.hasMixin(Game.Mixins.PlayerActor)) {
+                var namechecker = target.getName();
                 this.act();
             } else {
                 this.getMap().removeEntity(this);
+
+                if (this._name = 'boss') {
+                    Game.switchScreen(Game.Screen.winScreen);
+                };
+                // var checkername = 1;
+                // checkername = target.getName();
+                //console.log(checkername);
+
             }
         }
     }
@@ -273,7 +282,7 @@ Game.FungusTemplate = {
 
 Game.BatTemplate = {
     name: 'летучая мышь',
-    character: 'B',
+    character: 'b',
     foreground: 'white',
     maxHp: 5,
     attackValue: 4,
@@ -287,6 +296,16 @@ Game.NewtTemplate = {
     foreground: 'green',
     maxHp: 15,
     attackValue: 2,
+    mixins: [Game.Mixins.WanderActor,
+             Game.Mixins.Attacker, Game.Mixins.Destructible]
+};
+
+Game.NewtTemplate = {
+    name: 'Финальный босс',
+    character: 'B',
+    foreground: 'red',
+    maxHp: 150,
+    attackValue: 10,
     mixins: [Game.Mixins.WanderActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible]
 };

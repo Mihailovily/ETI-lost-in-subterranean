@@ -136,29 +136,22 @@ Game.Screen.playScreen = {
             return;
         }
         if (inputType === 'keydown') {
-            // If enter is pressed, go to the win screen
-            // If escape is pressed, go to lose screen
-            if (inputData.keyCode === ROT.VK_RETURN) {
-                Game.switchScreen(Game.Screen.winScreen);
-            } else if (inputData.keyCode === ROT.VK_ESCAPE) {
-                Game.switchScreen(Game.Screen.loseScreen);
+            // Movement
+            if (inputData.keyCode === ROT.VK_LEFT) {
+                this.move(-1, 0, 0);
+            } else if (inputData.keyCode === ROT.VK_RIGHT) {
+                this.move(1, 0, 0);
+            } else if (inputData.keyCode === ROT.VK_UP) {
+                this.move(0, -1, 0);
+            } else if (inputData.keyCode === ROT.VK_DOWN) {
+                this.move(0, 1, 0);
             } else {
-                // Movement
-                if (inputData.keyCode === ROT.VK_LEFT) {
-                    this.move(-1, 0, 0);
-                } else if (inputData.keyCode === ROT.VK_RIGHT) {
-                    this.move(1, 0, 0);
-                } else if (inputData.keyCode === ROT.VK_UP) {
-                    this.move(0, -1, 0);
-                } else if (inputData.keyCode === ROT.VK_DOWN) {
-                    this.move(0, 1, 0);
-                } else {
-                    // Not a valid key
-                    return;
-                }
-                // Unlock the engine
-                this._map.getEngine().unlock();
+                // Not a valid key
+                return;
             }
+            // Unlock the engine
+            this._map.getEngine().unlock();
+
         } else if (inputType === 'keypress') {
             var keyChar = String.fromCharCode(inputData.charCode);
             if (keyChar === '>') {
