@@ -12,13 +12,18 @@ Game.Screen.startScreen = {
         // Render our prompt to the screen
         display.drawText(1, 1, "%c{red}ETI представляет");
         display.drawText(1, 2, "%c{yellow}ETI : lost in subterranean");
-        display.drawText(1, 3, "Жми [Enter] и погнали!");
+        display.drawText(1, 3, "Что бы включить саундрек к игре, нажми [y] или жми [Enter] и погнали без звука!");
     },
     handleInput: function (inputType, inputData) {
         // When [Enter] is pressed, go to the play screen
         if (inputType === 'keydown') {
             if (inputData.keyCode === ROT.VK_RETURN) {
                 Game.switchScreen(Game.Screen.playScreen);
+            } else {
+                if (inputData.keyCode === 89) {
+                    backaudio.src = "Mac-Quayle-20-1-s4ve-the-w0rldact.mp3";
+                    Game.switchScreen(Game.Screen.playScreen);
+                }
             }
         }
     }
