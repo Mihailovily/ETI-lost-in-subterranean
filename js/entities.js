@@ -11,18 +11,12 @@ Game.Mixins.Moveable = {
         var target = map.getEntityAt(x, y, this.getZ());
         // If our z level changed, check if we are on stair
         if (z < this.getZ()) {
-            if (tile != Game.Tile.stairsUpTile) {
-                Game.sendMessage(this, "You can't go up here!");
-            } else {
-                Game.sendMessage(this, "You ascend to level %d!", [z + 1]);
+            if (tile = Game.Tile.stairsUpTile) {
                 this.setPosition(x, y, z);
             }
         } else if (z > this.getZ()) {
-            if (tile != Game.Tile.stairsDownTile) {
-                Game.sendMessage(this, "You can't go down here!");
-            } else {
+            if (tile = Game.Tile.stairsDownTile) {
                 this.setPosition(x, y, z);
-                Game.sendMessage(this, "You descend to level %d!", [z + 1]);
             }
             // If an entity was present at the tile
         } else if (target) {
@@ -182,21 +176,18 @@ Game.Mixins.Destructible = {
         // If have 0 or less HP, then remove ourseles from the map
         if (this._hp <= 0) {
             Game.sendMessage(attacker, 'Ты прибил %s!', [this.getName()]);
+            var namecheck = this.getName();
+            console.log(namecheck);
+            if (namecheck == 'Финальный босс') {
+                Game.switchScreen(Game.Screen.winScreen);
+            }
             // Check if the player died, and if so call their act method to prompt the user.
             if (this.hasMixin(Game.Mixins.PlayerActor)) {
-                var namechecker = target.getName();
                 this.act();
             } else {
                 this.getMap().removeEntity(this);
-
-                if (target.name = 'Финальный босс') {
-                    Game.switchScreen(Game.Screen.winScreen);
-                };
-                // var checkername = 1;
-                // checkername = target.getName();
-                //console.log(checkername);
-
             }
+
         }
     }
 };
@@ -304,8 +295,8 @@ Game.NewtTemplate = {
     name: 'Финальный босс',
     character: 'B',
     foreground: 'red',
-    maxHp: 150,
-    attackValue: 10,
+    maxHp: 100,
+    attackValue: 5,
     mixins: [Game.Mixins.WanderActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible]
 };
