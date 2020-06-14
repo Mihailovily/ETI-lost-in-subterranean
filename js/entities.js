@@ -175,7 +175,7 @@ Game.Mixins.Destructible = {
         this._hp -= damage;
         // If have 0 or less HP, then remove ourseles from the map
         if (this._hp <= 0) {
-            Game.sendMessage(attacker, 'Ты прибил %s!', [this.getName()]);
+            Game.sendMessage(attacker, 'Ты уничтожил %s!', [this.getName()]);
             var namecheck = this.getName();
             console.log(namecheck);
             if (namecheck == 'Финальный босс') {
@@ -279,6 +279,15 @@ Game.BatTemplate = {
     attackValue: 4,
     mixins: [Game.Mixins.WanderActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible]
+};
+
+Game.BatTemplate = {
+    name: 'сундук',
+    character: 'c',
+    foreground: 'yellow',
+    maxHp: 1,
+    attackValue: 0,
+    mixins: [Game.Mixins.Destructible]
 };
 
 Game.NewtTemplate = {
