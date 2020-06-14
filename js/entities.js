@@ -189,7 +189,7 @@ Game.Mixins.Destructible = {
             } else {
                 this.getMap().removeEntity(this);
 
-                if (this._name = 'boss') {
+                if (target.name = 'Финальный босс') {
                     Game.switchScreen(Game.Screen.winScreen);
                 };
                 // var checkername = 1;

@@ -34,13 +34,13 @@ Game.Tile.wallTile = new Game.Tile({
     diggable: true
 });
 Game.Tile.stairsUpTile = new Game.Tile({
-    character: '<',
+    character: '',
     foreground: 'white',
     walkable: true,
     blocksLight: false
 });
 Game.Tile.stairsDownTile = new Game.Tile({
-    character: '>',
+    character: '',
     foreground: 'white',
     walkable: true,
     blocksLight: false
