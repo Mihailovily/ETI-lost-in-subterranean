@@ -140,7 +140,7 @@ Game.Mixins.Attacker = {
             var defense = target.getDefenseValue();
             var max = Math.max(0, attack - defense);
             var damage = 1 + Math.floor(Math.random() * max);
-
+            console.log("Урон составил " + damage)
             Game.sendMessage(this, 'Ты от души врезал %s и нанес %d урона!',
                 [target.getName(), damage]);
             Game.sendMessage(target, '%s щедро отвесил тебе и нанес %d урона!',
@@ -177,7 +177,7 @@ Game.Mixins.Destructible = {
         if (this._hp <= 0) {
             Game.sendMessage(attacker, 'Ты уничтожил %s!', [this.getName()]);
             var namecheck = this.getName();
-            console.log(namecheck);
+            console.log(namecheck + " убит");
             if (namecheck == 'Финальный босс') {
                 Game.switchScreen(Game.Screen.winScreen);
             }

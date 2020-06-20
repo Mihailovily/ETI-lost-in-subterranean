@@ -3,10 +3,10 @@ Game.Screen = {};
 // Define our initial start screen
 Game.Screen.startScreen = {
     enter: function () {
-        console.log("Entered start screen.");
+        console.log("Открыт стартовый экран");
     },
     exit: function () {
-        console.log("Exited start screen.");
+        console.log("Закрыт стартовый экран");
     },
     render: function (display) {
         // Render our prompt to the screen
@@ -31,6 +31,7 @@ Game.Screen.startScreen = {
 
 // Define our playing screen
 Game.Screen.playScreen = {
+
     _map: null,
     _player: null,
     _gameEnded: false,
@@ -38,7 +39,7 @@ Game.Screen.playScreen = {
         // Create a map based on our size parameters
         var width = 140;
         var height = 148;
-        var depth = 6;
+        var depth = 1;
         // Create our map from the tiles and player
         var tiles = new Game.Builder(width, height, depth).getTiles();
         this._player = new Game.Entity(Game.PlayerTemplate);
@@ -48,7 +49,7 @@ Game.Screen.playScreen = {
         this._map.getEngine().start();
     },
     exit: function () {
-        console.log("Exited play screen.");
+        console.log("Закрыт игровой экран");
     },
     render: function (display) {
         var screenWidth = Game.getScreenWidth();
@@ -141,6 +142,7 @@ Game.Screen.playScreen = {
             return;
         }
         if (inputType === 'keydown') {
+            console.log("Нажата клавиша №" + inputData.keyCode)
             // Movement
             if (inputData.keyCode === ROT.VK_LEFT) {
                 this.move(-1, 0, 0);
@@ -186,10 +188,10 @@ Game.Screen.playScreen = {
 // Define our winning screen
 Game.Screen.winScreen = {
     enter: function () {
-        console.log("Entered win screen.");
+        console.log("Игрок выиграл. Открыт экран победы");
     },
     exit: function () {
-        console.log("Exited win screen.");
+        console.log("Закрыыт экран победы");
     },
     render: function (display) {
         // Render our prompt to the screen
@@ -199,7 +201,7 @@ Game.Screen.winScreen = {
             var g = Math.round(Math.random() * 255);
             var b = Math.round(Math.random() * 255);
             var background = ROT.Color.toRGB([r, g, b]);
-            display.drawText(2, i + 1, "%b{" + background + "}Ты выиграл!(или заюзал баг)");
+            display.drawText(2, i + 1, "%b{" + background + "}Ты выиграл!");
         }
     },
     handleInput: function (inputType, inputData) {
@@ -210,10 +212,10 @@ Game.Screen.winScreen = {
 // Define our winning screen
 Game.Screen.loseScreen = {
     enter: function () {
-        console.log("Entered lose screen.");
+        console.log("Игрок проиграл. Открыт экран поражения");
     },
     exit: function () {
-        console.log("Exited lose screen.");
+        console.log("Закрыт экран поражения");
     },
     render: function (display) {
         // Render our prompt to the screen
