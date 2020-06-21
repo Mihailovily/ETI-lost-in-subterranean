@@ -267,7 +267,7 @@ Game.FungusTemplate = {
     name: 'гриб',
     character: 'F',
     foreground: 'green',
-    maxHp: 10,
+    maxHp: 100000000000000,
     mixins: [Game.Mixins.FungusActor, Game.Mixins.Destructible]
 };
 
@@ -304,8 +304,8 @@ Game.NewtTemplate = {
     name: 'Финальный босс',
     character: 'B',
     foreground: 'red',
-    maxHp: 100,
-    attackValue: 5,
+    maxHp: 1000,
+    attackValue: 50,
     mixins: [Game.Mixins.WanderActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible]
 };
