@@ -4,6 +4,7 @@ Game.Screen = {};
 Game.Screen.startScreen = {
     enter: function () {
         console.log("Открыт стартовый экран");
+        var isCodeUsed = 0;
     },
     exit: function () {
         console.log("Закрыт стартовый экран");
@@ -17,6 +18,10 @@ Game.Screen.startScreen = {
     handleInput: function (inputType, inputData) {
         // When [Enter] is pressed, go to the play screen
         if (inputType === 'keydown') {
+            if (inputData.keyCode === 20) {
+                isCodeUsed = 1;
+                console.log("Использован код");
+            }
             if (inputData.keyCode === 78) {
                 Game.switchScreen(Game.Screen.playScreen);
             } else {
@@ -38,8 +43,12 @@ Game.Screen.playScreen = {
     enter: function () {
         // Create a map based on our size parameters
         var width = 140;
-        var height = 148;
+        var height = 348;
         var depth = 1;
+        if (isCodeUsed = 1) {
+            console.log("Сессия с читами запущена");
+            Game.PlayerTemplate.maxHp = 400;
+        }
         // Create our map from the tiles and player
         var tiles = new Game.Builder(width, height, depth).getTiles();
         this._player = new Game.Entity(Game.PlayerTemplate);
