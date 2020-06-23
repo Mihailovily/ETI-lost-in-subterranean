@@ -1,10 +1,10 @@
 Game.Screen = {};
-
+var isCodeUsed = 0;
 // Define our initial start screen
 Game.Screen.startScreen = {
     enter: function () {
         console.log("Открыт стартовый экран");
-        var isCodeUsed = 0;
+
     },
     exit: function () {
         console.log("Закрыт стартовый экран");
@@ -19,8 +19,11 @@ Game.Screen.startScreen = {
         // When [Enter] is pressed, go to the play screen
         if (inputType === 'keydown') {
             if (inputData.keyCode === 20) {
-                isCodeUsed = 1;
+              isCodeUsed = 1;
                 console.log("Использован код");
+            }
+            else {
+                isCodeUsed = 0;
             }
             if (inputData.keyCode === 78) {
                 Game.switchScreen(Game.Screen.playScreen);
@@ -33,10 +36,8 @@ Game.Screen.startScreen = {
         }
     }
 };
-
 // Define our playing screen
 Game.Screen.playScreen = {
-
     _map: null,
     _player: null,
     _gameEnded: false,
@@ -136,7 +137,7 @@ Game.Screen.playScreen = {
                 '%c{white}%b{black}' + messages[i]
             );
         }
-        // Render player HP 
+        // Render player HP
         var stats = '%c{white}%b{black}';
         stats += vsprintf('Здоровье: %d/%d ', [this._player.getHp(), this._player.getMaxHp()]);
         display.drawText(0, screenHeight, stats);
@@ -214,7 +215,7 @@ Game.Screen.winScreen = {
         }
     },
     handleInput: function (inputType, inputData) {
-        // Nothing to do here      
+        // Nothing to do here
     }
 };
 
@@ -233,6 +234,6 @@ Game.Screen.loseScreen = {
         }
     },
     handleInput: function (inputType, inputData) {
-        // Nothing to do here      
+        // Nothing to do here
     }
 };
