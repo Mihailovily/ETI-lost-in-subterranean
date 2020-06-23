@@ -26,7 +26,7 @@ Game.Mixins.Moveable = {
                 this.attack(target);
                 return true;
             } else {
-                // If not nothing we can do, but we can't 
+                // If not nothing we can do, but we can't
                 // move to the tile
                 return false;
             }
@@ -98,7 +98,7 @@ Game.Mixins.FungusActor = {
                         // Send a message nearby!
                         Game.sendMessageNearby(this.getMap(),
                             entity.getX(), entity.getY(), entity.getZ(),
-                            'The fungus is spreading!');
+                            ' ');
                     }
                 }
             }
@@ -157,7 +157,7 @@ Game.Mixins.Destructible = {
     init: function (template) {
         this._maxHp = template['maxHp'] || 10;
         // We allow taking in health from the template incase we want
-        // the entity to start with a different amount of HP than the 
+        // the entity to start with a different amount of HP than the
         // max specified.
         this._hp = template['hp'] || this._maxHp;
         this._defenseValue = template['defenseValue'] || 0;
@@ -180,6 +180,12 @@ Game.Mixins.Destructible = {
             console.log(namecheck + " убит");
             if (namecheck == 'Финальный босс') {
                 Game.switchScreen(Game.Screen.winScreen);
+            }
+            if (namecheck == 'исцеляющее зелье') {
+          Game.Screen.playScreen._player._hp = Game.Screen.playScreen._player._hp + 20;
+            }
+            if (namecheck == 'большое исцеляющее зелье') {
+            Game.Screen.playScreen._player._hp = Game.Screen.playScreen._player._maxHp;
             }
             // Check if the player died, and if so call their act method to prompt the user.
             if (this.hasMixin(Game.Mixins.PlayerActor)) {
@@ -222,7 +228,7 @@ Game.Mixins.Sight = {
 
 // Message sending functions
 Game.sendMessage = function (recipient, message, args) {
-    // Make sure the recipient can receive the message 
+    // Make sure the recipient can receive the message
     // before doing any work.
     if (recipient.hasMixin(Game.Mixins.MessageRecipient)) {
         // If args were passed, then we format the message, else
@@ -257,7 +263,7 @@ Game.PlayerTemplate = {
     foreground: 'white',
     maxHp: 40,
     attackValue: 10,
-    sightRadius: 6,
+    sightRadius: 60,
     mixins: [Game.Mixins.PlayerActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible,
              Game.Mixins.Sight, Game.Mixins.MessageRecipient]
@@ -290,6 +296,24 @@ Game.BatTemplate = {
     mixins: [Game.Mixins.Destructible]
 };
 
+Game.BatTemplate = {
+    name: 'исцеляющее зелье',
+    character: 'h',
+    foreground: 'green',
+    maxHp: 1,
+    attackValue: 0,
+    mixins: [Game.Mixins.Destructible]
+};
+
+Game.BatTemplate = {
+    name: 'большое исцеляющее зелье',
+    character: 'H',
+    foreground: 'green',
+    maxHp: 1,
+    attackValue: 0,
+    mixins: [Game.Mixins.Destructible]
+};
+
 Game.NewtTemplate = {
     name: 'зомби',
     character: 'Z',
@@ -300,7 +324,7 @@ Game.NewtTemplate = {
              Game.Mixins.Attacker, Game.Mixins.Destructible]
 };
 
-Game.NewtTemplate = {
+Game.BatTemplate = {
     name: 'Финальный босс',
     character: 'B',
     foreground: 'red',

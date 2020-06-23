@@ -39,7 +39,6 @@ Game.Screen.playScreen = {
     _player: null,
     _gameEnded: false,
     enter: function () {
-      console.log(isCodeUsed)
         // Create a map based on our size parameters
         var width = 140;
         var height = 348;
