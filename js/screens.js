@@ -22,9 +22,6 @@ Game.Screen.startScreen = {
               isCodeUsed = 1;
                 console.log("Использован код");
             }
-            else {
-                isCodeUsed = 0;
-            }
             if (inputData.keyCode === 78) {
                 Game.switchScreen(Game.Screen.playScreen);
             } else {
@@ -42,11 +39,12 @@ Game.Screen.playScreen = {
     _player: null,
     _gameEnded: false,
     enter: function () {
+      console.log(isCodeUsed)
         // Create a map based on our size parameters
         var width = 140;
         var height = 348;
         var depth = 1;
-        if (isCodeUsed = 1) {
+        if (isCodeUsed == 1) {
             console.log("Сессия с читами запущена");
             Game.PlayerTemplate.maxHp = 400;
         }
