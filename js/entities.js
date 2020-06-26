@@ -285,7 +285,7 @@ Game.PlayerTemplate = {
   character: '@',
   foreground: 'white',
   maxHp: 40,
-  attackValue: 10,
+  attackValue: 6,
   sightRadius: 600,
   mixins: [Game.Mixins.PlayerActor,
     Game.Mixins.Attacker, Game.Mixins.Destructible,
