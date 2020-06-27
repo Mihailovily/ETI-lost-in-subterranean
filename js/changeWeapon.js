@@ -1,9 +1,14 @@
-var you = {
-	health: 150,
-	resistance: 1,
-	weapon: false,
-	damage: false
-}
+Game.PlayerTemplate = {
+    character: '@',
+    foreground: 'white',
+    maxHp: 40,
+    attackValue: 10,
+    sightRadius: 6,
+    mixins: [Game.Mixins.PlayerActor,
+             Game.Mixins.Attacker, Game.Mixins.Destructible,
+             Game.Mixins.Sight, Game.Mixins.MessageRecipient]
+};
+
 var sword  = {
 	damage: 25
 }
@@ -19,31 +24,20 @@ var fists = {
 var machinegun = {
 	damage: 30
 }
-
 function changeWeaponSword(){
-	you.weapon = "sword";
-	you.damage = sword.damage;
-	document.write(you.weapon)
+	Game.Screen.playScreen._player._attackValue = sword.damage;
 }
-function changeWeaponKnife(){
-	you.weapon = "knife";
-	you.damage = knife.damage;
-	document.write(you.weapon)
+function changeWeaponKnife(){	
+	Game.Screen.playScreen._player._attackValue = knife.damage;	
 }
-function changeWeaponGun(){
-	you.weapon = "gun";
-	you.damage = gun.damage;
-	document.write(you.weapon)
+function changeWeaponGun(){	
+	Game.Screen.playScreen._player._attackValue = gun.damage;	
 }
-function changeWeaponFists(){
-	you.weapon = "fists";
-	you.damage = fists.damage;
-	document.write(you.weapon)
+function changeWeaponFists(){	
+	Game.Screen.playScreen._player._attackValue = fists.damage;	
 }
 function changeWeaponMachinegun(){
-	you.weapon = "machinegun";
-	you.damage = machinegun.damage;
-	document.write(you.damage)
+	Game.Screen.playScreen._player._attackValue = machinegun.damage;
 }
 
 
