@@ -300,3 +300,7 @@ Game.NewtTemplate = {
     mixins: [Game.Mixins.WanderActor,
              Game.Mixins.Attacker, Game.Mixins.Destructible]
 };
+function increaseSightRadius(){
+	Game.Screen.playScreen._player._sightRadius = Game.Screen.playScreen._player._sightRadius + 2;
+	document.write(Game.Screen.playScreen._player._sightRadius)
+}
