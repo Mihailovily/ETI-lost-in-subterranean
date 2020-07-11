@@ -9,31 +9,31 @@
 </pre>
 # ETI:lost in subterranean 
 
-Текстовый квест-игра для браузера
+Browser text quest game
 
-## Общие особенности
-Игра создана тремя энтузиастами
+## General Features
+The game was created by three enthusiasts.
 
-## Особенность отрисовки
+## Drawing feature
 
-## Особенности движка
-Движок будет записан в script. Движок не будет обрабатывать все объекты, изменившийся объект будет сам говорить движку, что он изменился. Также он будет обрабатывать все действия игрока: урон наносимый противнику, урон получаемый игроком, разрушение других объектов. 
+## Engine Features
+The engine will be written to the script. The engine will not process all objects, the changed object will tell the engine itself that it has changed. He will also handle all the player’s actions: damage done to the enemy, damage received by the player, destruction of other objects. 
 
-ПРИМЕРЫ ЗАДАНИЙ:
-1.Сломать стену,
-2.Убить кого-то,
-3.Добыть какой-то предмет для кого-то,
-4.Что-то вроде ачивок: убить 20 каких-то монстров, 20 других, пройти 100 шагов, помочь 15 людям, сломать 30 стен, добыть все виды оружия, добыть 20 оружий и т.д,
-5.Обчистить помещение. 
+EXAMPLES OF TASKS:
+1.Break the wall
+2. Kill someone
+3. Get some item for someone,
+4. Something like achievements: kill 20 some monsters, 20 others, walk 100 steps, help 15 people, break 30 walls, get all kinds of weapons, get 20 weapons, etc.
+5.Clean the room. 
 
-## Особенности генерации мира
+## Features of world generation
 
-Изначально генерируется карта 50х50 символов ASCII. Позднее при необходимости генерируются дополнительные карты 50х50 (за данный процесс отвечает движок). Генерация происходит при помощи js скрипта, функции, вызываемой движком игры
+Initially, a 50x50 ASCII character map is generated. Later, if necessary, additional 50x50 cards are generated (the engine is responsible for this process). Generation occurs using js script, a function called by the game engine
 
-## Авторы
+## Authors
 
-* **Егор Синотов** - *Разработчик движка* - [ ]( ) 
+* **Egor Sinotov** - *Engine developer* - [ ]( ) 
 
-* **Тимофей Румянцев** - *Разработчик...* - [ ]( )
+* **Timofey Rumyantsev** - *Developer...* - [ ]( )
 
-* **Илья Михайлов** - *Разработчик генерации мира* - [mihailovily](https://mihailovily.net.ru)
+* **Ilya Mikhailov** - *World Generation Developer* - [mihailovily](https://mihailovily.net.ru)
