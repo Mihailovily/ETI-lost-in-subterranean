@@ -56,7 +56,7 @@ Game.Mixins.PlayerActor = {
         if (this.getHp() < 1) {
             Game.Screen.playScreen.setGameEnded(true);
             // Send a last message to the player
-            Game.sendMessage(this, 'Ты умер... Жми [enter] (или F for pay respects) и возрождайся!');
+            Game.sendMessage(this, 'You died... Press [enter] (or F for pay respects) and play again!');
         }
         // Re-render the screen
         Game.refresh();
@@ -140,10 +140,10 @@ Game.Mixins.Attacker = {
             var defense = target.getDefenseValue();
             var max = Math.max(0, attack - defense);
             var damage = 1 + Math.floor(Math.random() * max);
-            console.log("Урон составил " + damage)
-            Game.sendMessage(this, 'Ты от души врезал %s и нанес %d урона!',
+            console.log("Damage are " + damage)
+            Game.sendMessage(this, 'You hit %s with all your heart and did %d damage!',
         [target.getName(), damage]);
-            Game.sendMessage(target, '%s щедро отвесил тебе и нанес %d урона!',
+            Game.sendMessage(target, '%s generously weighed you and inflicted %d damage!',
         [this.getName(), damage]);
 
             target.takeDamage(this, damage);
@@ -175,10 +175,10 @@ Game.Mixins.Destructible = {
         this._hp -= damage;
         // If have 0 or less HP, then remove ourseles from the map
         if (this._hp <= 0) {
-            Game.sendMessage(attacker, 'Ты уничтожил %s!', [this.getName()]);
+            Game.sendMessage(attacker, 'You destroyed %s!', [this.getName()]);
             var namecheck = this.getName();
-            console.log(namecheck + " убит");
-            if (namecheck == 'Финальный босс') {
+            console.log(namecheck + " killed");
+            if (namecheck == 'Final boss') {
                 Game.switchScreen(Game.Screen.winScreen);
             }
             if (namecheck == 'исцеляющее зелье') {
@@ -187,7 +187,7 @@ Game.Mixins.Destructible = {
             if (namecheck == 'большое исцеляющее зелье') {
                 Game.Screen.playScreen._player._hp = Game.Screen.playScreen._player._maxHp;
             }
-            if (namecheck == 'сундук') {
+            if (namecheck == 'chest') {
                 var fromChest = getRandomInt(4);
                 var randHealth = getRandomInt(100);
                 switch (fromChest) {
@@ -286,7 +286,7 @@ Game.PlayerTemplate = {
     foreground: 'white',
     maxHp: 10,
     attackValue: 6,
-    sightRadius: 600,
+    sightRadius: 6,
     defenseValue: 5,
     mixins: [Game.Mixins.PlayerActor,
     Game.Mixins.Attacker, Game.Mixins.Destructible,
@@ -303,7 +303,7 @@ Game.FungusTemplate = {
 };
 
 Game.BatTemplate = {
-    name: 'летучая мышь',
+    name: 'bat',
     character: 'b',
     foreground: 'white',
     maxHp: 5,
@@ -314,7 +314,7 @@ Game.BatTemplate = {
 };
 
 Game.BatTemplate = {
-    name: 'сундук',
+    name: 'chest',
     character: 'c',
     foreground: 'yellow',
     maxHp: 1,
@@ -341,7 +341,7 @@ Game.BatTemplate = {
 };
 
 Game.NewtTemplate = {
-    name: 'зомби',
+    name: 'zombie',
     character: 'Z',
     foreground: 'green',
     maxHp: 15,
@@ -352,7 +352,7 @@ Game.NewtTemplate = {
 };
 
 Game.BatTemplate = {
-    name: 'Финальный босс',
+    name: 'Final boss',
     character: 'B',
     foreground: 'red',
     maxHp: 1000,

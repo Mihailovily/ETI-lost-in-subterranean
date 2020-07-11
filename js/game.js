@@ -62,7 +62,7 @@ var Game = {
 window.onload = function() {
   // Check if rot.js can work on this browser
   if (!ROT.isSupported()) {
-    alert("Библиотека rot.js не поддерживается твоим браузером. Удали свой Internet Explorer и возвращайся");
+    alert("rot.js library unsupported by your broser. Delete your Internet Explorer and go back!");
   } else {
     // Initialize the game
     Game.init();

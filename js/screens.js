@@ -8,24 +8,24 @@ function getRandomInt(max) {
 // Define our initial start screen
 Game.Screen.startScreen = {
   enter: function() {
-    console.log("Открыт стартовый экран");
+    console.log("Start screen opened");
 
   },
   exit: function() {
-    console.log("Закрыт стартовый экран");
+    console.log("Start screen closed");
   },
   render: function(display) {
     // Render our prompt to the screen
-    display.drawText(1, 1, "%c{red}ETI представляет");
+    display.drawText(1, 1, "%c{red}ETI presents");
     display.drawText(1, 2, "%c{yellow}ETI : lost in subterranean");
-    display.drawText(1, 3, "Что бы включить саундрек к игре, нажми [y] или жми [n] и погнали без звука!");
+    display.drawText(1, 3, "If you want to enable soundtrack, press [y] or press [n] and go without sound!");
   },
   handleInput: function(inputType, inputData) {
     // When [Enter] is pressed, go to the play screen
     if (inputType === 'keydown') {
       if (inputData.keyCode === 20) {
         isCodeUsed = 1;
-        console.log("Использован код");
+        console.log("Used cheatcode");
       }
       if (inputData.keyCode === 78) {
         Game.switchScreen(Game.Screen.playScreen);
@@ -49,7 +49,7 @@ Game.Screen.playScreen = {
     var height = 448;
     var depth = 1;
     if (isCodeUsed == 1) {
-      console.log("Сессия с читами запущена");
+      console.log("Session with cheats started");
       Game.PlayerTemplate.maxHp = 400;
     }
     // Create our map from the tiles and player
@@ -61,7 +61,7 @@ Game.Screen.playScreen = {
     this._map.getEngine().start();
   },
   exit: function() {
-    console.log("Закрыт игровой экран");
+    console.log("Game screen closed");
   },
   render: function(display) {
     var screenWidth = Game.getScreenWidth();
@@ -141,7 +141,7 @@ Game.Screen.playScreen = {
     }
     // Render player HP
     var stats = '%c{white}%b{black}';
-    stats += vsprintf('Здоровье: %d/%d ', [this._player.getHp(), this._player.getMaxHp()]);
+    stats += vsprintf('Health: %d/%d ', [this._player.getHp(), this._player.getMaxHp()]);
     display.drawText(0, screenHeight, stats);
   },
   handleInput: function(inputType, inputData) {
@@ -154,7 +154,7 @@ Game.Screen.playScreen = {
       return;
     }
     if (inputType === 'keydown') {
-      console.log("Нажата клавиша №" + inputData.keyCode)
+      console.log("Pressed key №" + inputData.keyCode)
       // Movement
       if (inputData.keyCode === ROT.VK_LEFT) {
         this.move(-1, 0, 0);
@@ -200,10 +200,10 @@ Game.Screen.playScreen = {
 // Define our winning screen
 Game.Screen.winScreen = {
   enter: function() {
-    console.log("Игрок выиграл. Открыт экран победы");
+    console.log("Player win. WinScreen opened.");
   },
   exit: function() {
-    console.log("Закрыыт экран победы");
+    console.log("WinScreen closed");
   },
   render: function(display) {
     // Render our prompt to the screen
@@ -213,7 +213,7 @@ Game.Screen.winScreen = {
       var g = Math.round(Math.random() * 255);
       var b = Math.round(Math.random() * 255);
       var background = ROT.Color.toRGB([r, g, b]);
-      display.drawText(2, i + 1, "%b{" + background + "}Ты выиграл!");
+      display.drawText(2, i + 1, "%b{" + background + "}You win!");
     }
   },
   handleInput: function(inputType, inputData) {
@@ -224,15 +224,15 @@ Game.Screen.winScreen = {
 // Define our winning screen
 Game.Screen.loseScreen = {
   enter: function() {
-    console.log("Игрок проиграл. Открыт экран поражения");
+    console.log("Player lose. LoseScreen opened");
   },
   exit: function() {
-    console.log("Закрыт экран поражения");
+    console.log("LoseScreen closed");
   },
   render: function(display) {
     // Render our prompt to the screen
     for (var i = 0; i < 22; i++) {
-      display.drawText(2, i + 1, "%b{red}Ты проиграл! Давай по-новой :(");
+      display.drawText(2, i + 1, "%b{red}You lose! Let's go again :(");
     }
   },
   handleInput: function(inputType, inputData) {
