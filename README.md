@@ -1,5 +1,5 @@
  <pre>              
-                     ___   ___ 
+                     ___   ___
     //   / / /__  ___/ / /    
    //____      / /    / /     
   / ____      / /    / /      
@@ -7,33 +7,31 @@
 //____/ /   / /  __/ /___     
 
 </pre>
-# ETI:lost in subterranean 
+# ETI:lost in subterranean
 
-Browser text quest game
+Browser-based rogue-like game on rot.js
+To win player must kill the final boss
 
 ## General Features
-The game was created by three enthusiasts.
+
+The game was created by three enthusiasts from Russian Federation. After 10 July game developes by 2 teammates.
 
 ## Drawing feature
 
-## Engine Features
-The engine will be written to the script. The engine will not process all objects, the changed object will tell the engine itself that it has changed. He will also handle all the player’s actions: damage done to the enemy, damage received by the player, destruction of other objects. 
+Drawing using multi-screens system, which based on rot.js. For drawing using UTF-8 sybols like a "@", "#" etc.
 
-EXAMPLES OF TASKS:
-1.Break the wall
-2. Kill someone
-3. Get some item for someone,
-4. Something like achievements: kill 20 some monsters, 20 others, walk 100 steps, help 15 people, break 30 walls, get all kinds of weapons, get 20 weapons, etc.
-5.Clean the room. 
+## Engine Features
+
+Engine based on rot.js too. For move chraster player must use a keyboard.
 
 ## Features of world generation
 
-Initially, a 50x50 ASCII character map is generated. Later, if necessary, additional 50x50 cards are generated (the engine is responsible for this process). Generation occurs using js script, a function called by the game engine
+Random map generation using rot.js framework. Map has fixed width and height.
 
 ## Authors
 
-* **Egor Sinotov** - *Engine developer* - [ ]( ) 
+* **Egor Sinotov** - *Developer* - [ ]( )
 
-* **Timofey Rumyantsev** - *Developer...* - [ ]( )
+* **Timofey Rumyantsev** - *Developer (Leaved the ETI team in July 2020)* - [ ]( )
 
-* **Ilya Mikhailov** - *World Generation Developer* - [mihailovily](https://mihailovily.net.ru)
+* **Ilya Mikhailov** - *Developer* - [mihailovily](https://mihailovily.net.ru)
